@@ -1,0 +1,64 @@
+{
+  "responses": [
+    {
+      "submitted_at": "2024-05-20T08:00:00+00:00",
+      "source_id": "bloomberg_ai",
+      "action": "add",
+      "payload": {
+        "name": "Bloomberg • AI Disruption",
+        "url": "https://www.bloomberg.com/topics/artificial-intelligence",
+        "ingestion_type": "html",
+        "credibility_score": 0.94,
+        "visitor_score": 0.95,
+        "business_alignment": 0.92,
+        "topics": ["business", "markets"],
+        "cadence": "daily"
+      }
+    },
+    {
+      "submitted_at": "2024-05-20T08:05:00+00:00",
+      "source_id": "economist_business_lab",
+      "action": "add",
+      "payload": {
+        "name": "The Economist • Business Lab",
+        "url": "https://www.economist.com/business/rss",
+        "ingestion_type": "rss",
+        "credibility_score": 0.9,
+        "visitor_score": 0.88,
+        "business_alignment": 0.9,
+        "topics": ["business", "policy"],
+        "cadence": "daily"
+      }
+    },
+    {
+      "submitted_at": "2024-05-20T08:10:00+00:00",
+      "source_id": "fortune_ai",
+      "action": "add",
+      "payload": {
+        "name": "Fortune • AI",
+        "url": "https://fortune.com/tag/artificial-intelligence/",
+        "ingestion_type": "html",
+        "credibility_score": 0.82,
+        "visitor_score": 0.84,
+        "business_alignment": 0.86,
+        "topics": ["business", "society"],
+        "cadence": "daily"
+      }
+    },
+    {
+      "submitted_at": "2024-05-20T08:15:00+00:00",
+      "source_id": "policy_innovation",
+      "action": "add",
+      "payload": {
+        "name": "Center for Data Innovation • AI Policy",
+        "url": "https://www.datainnovation.org/feed/",
+        "ingestion_type": "rss",
+        "credibility_score": 0.78,
+        "visitor_score": 0.72,
+        "business_alignment": 0.81,
+        "topics": ["policy", "society"],
+        "cadence": "weekly"
+      }
+    }
+  ]
+}

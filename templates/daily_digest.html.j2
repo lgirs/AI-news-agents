@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ digest.date }} AI Business Signals</title>
+    <style>
+      :root {
+        --hero: {{ theme.palette.hero }};
+        --accent: {{ theme.palette.accent }};
+        --text: {{ theme.palette.text }};
+      }
+      body {
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        background: #f6f7fb;
+        color: var(--text);
+        margin: 0;
+        line-height: 1.5;
+      }
+      header {
+        background: var(--hero);
+        padding: 2rem;
+        color: var(--text);
+      }
+      .hero-title {
+        font-size: 2.2rem;
+        margin: 0;
+      }
+      .theme-meta {
+        opacity: 0.8;
+        font-size: 0.95rem;
+      }
+      main {
+        padding: 2rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .card {
+        background: white;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      }
+      .timeline {
+        margin-top: 3rem;
+      }
+      .timeline-item {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      footer {
+        background: #101935;
+        color: #fff;
+        padding: 1rem 2rem;
+        text-align: center;
+      }
+      .signal-meter {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .signal-meter span {
+        flex: 1;
+        height: 8px;
+        border-radius: 4px;
+        background: #d1d5db;
+      }
+      .signal-meter span.active {
+        background: var(--accent);
+      }
+      @media (max-width: 600px) {
+        header, main {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="theme-meta">{{ theme.weather.summary }}</p>
+      <h1 class="hero-title">{{ digest.date }} • {{ theme.title }}</h1>
+      <p>{{ theme.subtitle }}</p>
+      <div class="signal-meter">
+        {% for i in range(5) %}
+        <span class="{% if i < digest.signal_score %}active{% endif %}"></span>
+        {% endfor %}
+      </div>
+    </header>
+    <main>
+      <section class="grid">
+        {% for topic, stories in digest.topics.items() %}
+        <article class="card">
+          <h2>{{ topic.title() }}</h2>
+          {% for story in stories %}
+          <h3><a href="{{ story.url }}" target="_blank" rel="noopener">{{ story.title }}</a></h3>
+          <p>{{ story.summary }}</p>
+          <p><small>{{ story.source_name }}</small></p>
+          {% endfor %}
+        </article>
+        {% endfor %}
+      </section>
+      <section class="timeline">
+        <h2>Timeline</h2>
+        {% for story in digest.timeline %}
+        <div class="timeline-item">
+          <strong>{{ story.published_at }}</strong> · {{ story.title }} — {{ story.source_name }}
+        </div>
+        {% endfor %}
+      </section>
+      <section class="card" style="margin-top:2rem;">
+        <h2>Quote of the day</h2>
+        <blockquote>{{ digest.quote.text }}</blockquote>
+        <p><small>— {{ digest.quote.author }}</small></p>
+      </section>
+    </main>
+    <footer>
+      Built automatically from public AI-business news feeds.
+    </footer>
+  </body>
+</html>
